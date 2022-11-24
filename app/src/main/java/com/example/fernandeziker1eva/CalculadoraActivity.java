@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class CalculadoraActivity extends AppCompatActivity {
 
@@ -183,6 +184,7 @@ public class CalculadoraActivity extends AppCompatActivity {
                             }
                         }
                     });
+                    operacion = false;
 
                 }
 
@@ -190,6 +192,14 @@ public class CalculadoraActivity extends AppCompatActivity {
 
 
 
+        });
+
+        igual.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String numero = (String) txt.getText().toString();
+                txt.setText(numero);
+            }
         });
 
         multiplicacion.setOnClickListener(new View.OnClickListener() {
@@ -264,14 +274,22 @@ public class CalculadoraActivity extends AppCompatActivity {
                             operacion2 = false;
                             String numero2 = (String) txt.getText().toString();
 
+
+
                             if (numero2.equals("")) {
                                 txt.setText(numero);
                             } else {
-                                String resultado = "";
-                                resultado = dividir(numero, numero2);
-                                String finalResultado = resultado;
-                                txt.setText(finalResultado);
+                                if(numero2 == "0"){
+                                    Toast.makeText(CalculadoraActivity.this, "NO ES POSIBLE DIVIDIR ENTRE 0", Toast.LENGTH_LONG).show();
+                                }else {
+                                    String resultado = "";
+                                    resultado = dividir(numero, numero2);
+                                    String finalResultado = resultado;
+                                    txt.setText(finalResultado);
+                                }
                             }
+
+
                         }
                     });
 
