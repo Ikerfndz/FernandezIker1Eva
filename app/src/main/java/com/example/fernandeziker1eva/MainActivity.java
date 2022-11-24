@@ -4,6 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -11,6 +15,8 @@ import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import java.security.Principal;
 
 public class MainActivity extends AppCompatActivity {
     TextView txt;
@@ -46,5 +52,37 @@ public class MainActivity extends AppCompatActivity {
     public void animacion (View view){
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.animacion);
         txt.startAnimation(animation);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.xmlmenu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        String mensaje = "";
+        switch (item.getItemId()){
+            case R.id.Menu1:
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.Menu2:
+                Intent intent2 = new Intent(getApplicationContext(), CalculadoraActivity.class);
+                startActivity(intent2);
+                return true;
+            case R.id.Menu3:
+                Intent intent3 = new Intent(getApplicationContext(), ContactoActivity.class);
+                startActivity(intent3);
+                return true;
+            default:return super.onOptionsItemSelected(item);
+        }
+    }
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo){
+        super.onCreateContextMenu(menu,v,menuInfo);
+        MenuInflater inflate = getMenuInflater();
+        inflate.inflate(R.menu.xmlmenu,menu);
+
     }
 }
