@@ -27,5 +27,7 @@
     <string name="divison">/</string>
     <string name="invertir">INV</string>
     <string name="borrar">BORRAR</string>
+    
+    <string name="elevado">Xª</string>
 
 </resources>

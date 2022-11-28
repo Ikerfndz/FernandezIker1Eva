@@ -3,6 +3,7 @@ package com.example.fernandeziker1eva;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.Menu;
@@ -68,13 +69,21 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
                 return true;
-            case R.id.Menu2:
+            case R.id.SubmenuCalculadora:
                 Intent intent2 = new Intent(getApplicationContext(), CalculadoraActivity.class);
                 startActivity(intent2);
                 return true;
-            case R.id.Menu3:
+            case R.id.SubmenuEnlace:
+                Intent intent4 = new Intent(Intent.ACTION_VIEW, Uri.parse("https://web2.0calc.es/"));
+                startActivity(intent4);
+                return true;
+            case R.id.Submenucontacto:
                 Intent intent3 = new Intent(getApplicationContext(), ContactoActivity.class);
                 startActivity(intent3);
+                return true;
+            case R.id.SubmenuMail:
+                Intent intent5 = new Intent(Intent.ACTION_VIEW, Uri.parse("https://mail.google.com/mail/u/0/#inbox"));
+                startActivity(intent5);
                 return true;
             default:return super.onOptionsItemSelected(item);
         }

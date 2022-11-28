@@ -3,11 +3,13 @@ package com.example.fernandeziker1eva;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.SubMenu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -22,7 +24,6 @@ public class CalculadoraActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculadora);
-
 
 
         Button cero = (Button) findViewById(R.id.boton0);
@@ -48,79 +49,79 @@ public class CalculadoraActivity extends AppCompatActivity {
         Button multiplicacion = (Button) findViewById(R.id.botonMultiplicacion);
         Button division = (Button) findViewById(R.id.botonDivision);
         Button borrar = (Button) findViewById(R.id.botonBorrar);
+        Button alCuadrdao = (Button) findViewById(R.id.botonElevadoCuadrado);
+
+        uno.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String numero = (String) txt.getText().toString();
+                txt.setText(numero += 1);
 
 
-       uno.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-               String numero = (String) txt.getText().toString();
-               txt.setText(numero+=1);
-
-
-           }
-       });
+            }
+        });
 
         dos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String numero = (String) txt.getText().toString();
-                txt.setText(numero+=2);
+                txt.setText(numero += 2);
             }
         });
         tres.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String numero = (String) txt.getText().toString();
-                txt.setText(numero+=3);
+                txt.setText(numero += 3);
             }
         });
         cuatro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String numero = (String) txt.getText().toString();
-                txt.setText(numero+=4);
+                txt.setText(numero += 4);
             }
         });
         cinco.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String numero = (String) txt.getText().toString();
-                txt.setText(numero+=5);
+                txt.setText(numero += 5);
             }
         });
         seis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String numero = (String) txt.getText().toString();
-                txt.setText(numero+=6);
+                txt.setText(numero += 6);
             }
         });
         siete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String numero = (String) txt.getText().toString();
-                txt.setText(numero+=7);
+                txt.setText(numero += 7);
             }
         });
         ocho.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String numero = (String) txt.getText().toString();
-                txt.setText(numero+=8);
+                txt.setText(numero += 8);
             }
         });
         nueve.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String numero = (String) txt.getText().toString();
-                txt.setText(numero+=9);
+                txt.setText(numero += 9);
             }
         });
         cero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String numero = (String) txt.getText().toString();
-                txt.setText(numero+=0);
+                txt.setText(numero += 0);
             }
         });
 
@@ -188,8 +189,7 @@ public class CalculadoraActivity extends AppCompatActivity {
 
                 }
 
-                }
-
+            }
 
 
         });
@@ -275,13 +275,12 @@ public class CalculadoraActivity extends AppCompatActivity {
                             String numero2 = (String) txt.getText().toString();
 
 
-
                             if (numero2.equals("")) {
                                 txt.setText(numero);
                             } else {
-                                if(numero2 == "0"){
+                                if (numero2 == "0") {
                                     Toast.makeText(CalculadoraActivity.this, "NO ES POSIBLE DIVIDIR ENTRE 0", Toast.LENGTH_LONG).show();
-                                }else {
+                                } else {
                                     String resultado = "";
                                     resultado = dividir(numero, numero2);
                                     String finalResultado = resultado;
@@ -299,7 +298,6 @@ public class CalculadoraActivity extends AppCompatActivity {
             }
 
         });
-
 
 
         menos.setOnClickListener(new View.OnClickListener() {
@@ -346,14 +344,11 @@ public class CalculadoraActivity extends AppCompatActivity {
             }
 
 
-
-
         });
 
         punto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
 
 
                 if (operacion == true) {
@@ -368,14 +363,28 @@ public class CalculadoraActivity extends AppCompatActivity {
             }
 
 
+        });
 
+        alCuadrdao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (operacion2 == false) {
+
+                    String numero = (String) txt.getText().toString();
+                    String resultadoFinal = "";
+                    resultadoFinal = cuadrado(numero);
+                    txt.setText(resultadoFinal);
+                    operacion = true;
+
+                }
+            }
         });
 
 
     }
 
 
-    public static String sumar(String n1, String n2){
+    public static String sumar(String n1, String n2) {
         double suma = 0;
 
         double numEntero1 = Double.parseDouble(n1);
@@ -387,7 +396,7 @@ public class CalculadoraActivity extends AppCompatActivity {
         return numero;
     }
 
-    public static String restar(String n1, String n2){
+    public static String restar(String n1, String n2) {
         double suma = 0;
 
         double numEntero1 = Double.parseDouble(n1);
@@ -399,7 +408,7 @@ public class CalculadoraActivity extends AppCompatActivity {
         return numero;
     }
 
-    public static String multiplicar(String n1, String n2){
+    public static String multiplicar(String n1, String n2) {
         double suma = 0;
 
         double numEntero1 = Double.parseDouble(n1);
@@ -411,7 +420,7 @@ public class CalculadoraActivity extends AppCompatActivity {
         return numero;
     }
 
-    public static String dividir(String n1, String n2){
+    public static String dividir(String n1, String n2) {
         double suma = 0;
 
         double numEntero1 = Double.parseDouble(n1);
@@ -422,9 +431,22 @@ public class CalculadoraActivity extends AppCompatActivity {
 
         return numero;
     }
+
+    public static String cuadrado(String n1) {
+        double resultado = 0;
+
+        double numEntero1 = Double.parseDouble(n1);
+
+        resultado = numEntero1 * numEntero1;
+
+        String numero = String.valueOf(resultado);
+
+        return numero;
+    }
+
     @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.xmlmenu,menu);
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.xmlmenu, menu);
         return true;
     }
 
@@ -436,22 +458,35 @@ public class CalculadoraActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
                 return true;
-            case R.id.Menu2:
+            case R.id.SubmenuCalculadora:
                 Intent intent2 = new Intent(getApplicationContext(), CalculadoraActivity.class);
                 startActivity(intent2);
                 return true;
-            case R.id.Menu3:
+            case R.id.SubmenuEnlace:
+                Intent intent4 = new Intent(Intent.ACTION_VIEW, Uri.parse("https://web2.0calc.es/"));
+                startActivity(intent4);
+                return true;
+            case R.id.Submenucontacto:
                 Intent intent3 = new Intent(getApplicationContext(), ContactoActivity.class);
                 startActivity(intent3);
+                return true;
+            case R.id.SubmenuMail:
+                Intent intent5 = new Intent(Intent.ACTION_VIEW, Uri.parse("https://mail.google.com/mail/u/0/#inbox"));
+                startActivity(intent5);
                 return true;
             default:return super.onOptionsItemSelected(item);
         }
     }
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo){
-        super.onCreateContextMenu(menu,v,menuInfo);
+
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
         MenuInflater inflate = getMenuInflater();
-        inflate.inflate(R.menu.xmlmenu,menu);
+        inflate.inflate(R.menu.xmlmenu, menu);
 
     }
+
+
+
+
 
 }
