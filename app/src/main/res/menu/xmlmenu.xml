@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/Menu1" android:title = "Menu Principal"></item>
+    <item android:id="@+id/Menu2" android:title = "SubmenuCal">
+        <menu>
+            <item android:id="@+id/SubmenuCalculadora" android:title="Calculadora"></item>
+            <item android:id="@+id/SubmenuEnlace" android:title="Enlace"></item>
+        </menu>
+    </item>
+    <item android:id="@+id/Menu3" android:title = "SubMenuContac">
+        <menu>
+            <item android:id="@+id/SubmenuMail" android:title="Mail"></item>
+            <item android:id="@+id/Submenucontacto" android:title="Contacto"></item>
+        </menu>
+    </item>
+</menu>
